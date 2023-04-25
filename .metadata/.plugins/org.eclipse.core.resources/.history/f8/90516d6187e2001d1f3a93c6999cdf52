@@ -1,0 +1,13 @@
+package com.example.springdemo.db;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class database {
+@Id
+	private int id;
+	private String name;
+	private String dep;
+
+}
