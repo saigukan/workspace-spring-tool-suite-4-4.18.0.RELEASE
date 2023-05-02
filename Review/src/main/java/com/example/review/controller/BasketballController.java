@@ -39,6 +39,17 @@ public class BasketballController {
 	{
 		dbask.deletevalues(no);
 	}
+	@GetMapping("/sort/{no}")
+	public List<Basketball> sortall(@PathVariable String no)
+	{
+		return dbask.sortall(no);
+	}
+	@GetMapping("/pagingandsort/{offset}/{pageSize}/{field}")
+
+	public List<Basketball> pagingAndSortingEmployees(@PathVariable int offset,@PathVariable int pageSize,@PathVariable String field) 
+	{
+		return dbask.pagingAndSortingEmployees(offset, pageSize, field);
+	}
 	
 
 
