@@ -9,8 +9,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+
 import com.example.MobilePhone.Repository.PhoneRepository;
 import com.example.MobilePhone.db.MobilePhone;
+
+import jakarta.transaction.Transactional;
+
+
 
 @Service
 public class PhoneService {
@@ -91,6 +96,28 @@ public class PhoneService {
 
 		return prep.findByColour(colour);
 
+	}
+	public List<MobilePhone> getPhoneByRam(String ram)
+	{
+		return prep.getPhoneByRam(ram);
+		
+
+	}
+	public List<MobilePhone> getPhoneByRam(String ram,String name)
+	{
+		return prep.getPhoneByRam(ram,name);
+		
+
+	}
+	@Transactional
+	public int  deletephonebyname(String name)
+	{
+		return prep.deletephonebyname(name);
+	}
+	@Transactional
+	public int updatephonebyname(String ram, String name)
+	{
+		return prep.updatephonebyname(ram,name);
 	}
 
 }

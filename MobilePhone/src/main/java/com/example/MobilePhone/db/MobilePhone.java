@@ -1,7 +1,12 @@
 package com.example.MobilePhone.db;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class MobilePhone {
@@ -11,6 +16,9 @@ public class MobilePhone {
 	private String ram;
 	private String fcam;
 	private String bcam;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn
+	public List<MobilePhoneAns> ans; 
 	public int getNo() {
 		return no;
 	}

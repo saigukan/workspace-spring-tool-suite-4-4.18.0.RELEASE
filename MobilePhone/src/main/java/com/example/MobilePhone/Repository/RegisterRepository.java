@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.MobilePhone.db.Register;
 
 @Repository
-public interface RegisterRepository extends JpaRepository<Register,Integer>
+public interface RegisterRepository extends JpaRepository<Register,String>
 {
       
 }

@@ -15,17 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.MobilePhone.Service.PhoneService;
 import com.example.MobilePhone.db.MobilePhone;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 public class PhoneController {
 	@Autowired
 	PhoneService pserv;
+	@Tag(name="Get all MobilePhone",description="Get all")
 	@GetMapping(value="/get")
 	public List<MobilePhone> getphone()
 	{
 		List<MobilePhone> a=pserv.getphone();
 		return a;
 	}
-	@PostMapping(value="post")
+	@PostMapping(value="/post")
 	public MobilePhone savephone(@RequestBody MobilePhone m)
 	{
 		return pserv.savephone(m);
@@ -98,6 +101,32 @@ public class PhoneController {
 
 		return pserv.fetchPhoneByColour(colour);
 
+	}
+	@GetMapping(value="/jpl/{ram}")
+	public List<MobilePhone> getPhoneByRam(@PathVariable String ram)
+	{
+		return pserv.getPhoneByRam(ram);
+		
+	}
+	@GetMapping(value="/jpl/{ram}/{name}")
+	public List<MobilePhone> getPhoneByRam(@PathVariable String ram,@PathVariable String name )
+	{
+		return pserv.getPhoneByRam(ram,name);
+		
+	}
+	@DeleteMapping(value="del/{no}")
+	public String deletephonebyname(@PathVariable String name)
+	{
+		int result = pserv.deletephonebyname(name);
+		if(result>0)
+			return "Student record deleted";
+		else
+			return "Problem ocuured while deleting";
+	}
+	@PutMapping(value="/update/{ram}/{name}")
+	public int updatephonebyname(@PathVariable String ram,@PathVariable String name)
+	{
+		return pserv.updatephonebyname(ram,name);
 	}
 	
 
