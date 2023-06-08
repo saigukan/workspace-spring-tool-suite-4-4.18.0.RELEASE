@@ -16,7 +16,7 @@ public class AdminController
 {
   @Autowired
   AdminService aService;
-  @GetMapping("/getAdminDetails")
+  @GetMapping("/AdminDetails")
   public List<LoanApplicationModel> getAdmin()
   {
 	  List<LoanApplicationModel> adminList = aService.getAdmin();
